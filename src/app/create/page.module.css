@@ -1,0 +1,86 @@
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .formTitle {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label {
+    font-weight: 600;
+    color: #333; 
+    margin-bottom: 8px;
+  }
+  
+  .input,
+  .textarea,
+  .fileInput {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333; 
+    background-color: #fff; 
+  }
+  
+  .textarea::placeholder,
+  .input::placeholder {
+    color: #999; 
+  }
+   
+  
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    color: #333;
+  }
+  
+  .checkbox {
+    margin-left: 10px;
+  }
+  
+  .nftSettings {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 20px;
+  }
+  
+  .submitButton {
+    padding: 14px 30px;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .submitButton:hover {
+    background-color: #27ae60;
+  }
