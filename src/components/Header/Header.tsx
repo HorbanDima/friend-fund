@@ -14,7 +14,7 @@ export default function Header() {
         <Link href="/create" className={styles.navLink}>
           Create Fundraiser
         </Link>        
-        <Link href="/campaigns" className={styles.navLink}>
+        <Link href="/campaign" className={styles.navLink}>
         Open Fundraiser
         </Link>
       </nav>

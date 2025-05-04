@@ -1,0 +1,74 @@
+.container {
+    padding: 20px;
+  }
+  
+  .campaignList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .campaignItem {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .campaignItem:hover {
+    transform: translateY(-5px);
+  }
+  
+  .campaignLink {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .campaignImageContainer {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .campaignDetails {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .campaignTitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .campaignDescription {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .progressBarContainer {
+    background-color: #eee;
+    border-radius: 5px;
+    height: 8px;
+    overflow: hidden;
+  }
+  
+  .progressBar {
+    background-color: #007bff;
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+  .campaignProgress {
+    font-size: 0.8em;
+    color: #777;
+  }
