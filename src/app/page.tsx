@@ -4,17 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css';
-import logo from '../../public/friendfund-logo.png';
 import solanaLogo from '../../public/solana-logo.png'
 
 const HomePage: React.FC = () => {
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>
-                <Link href="/" className={styles.logoContainer}>
-                    <Image src={logo} alt="FriendFund Logo" className={styles.logo} priority />
-                </Link>
-            </header>
+        <div className={styles.container}>         
 
             <main className={styles.main}>
                 <section className={styles.hero}>
