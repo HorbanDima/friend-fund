@@ -1,8 +1,15 @@
+"use client"
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../../public/friendfund-logo.png';
 import styles from './Header.module.css'; 
+import dynamic from 'next/dynamic';
+const WalletMultiButton = dynamic(
+    async () =>
+      (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
+    { ssr: false }
+  );
 
 export default function Header() {
   return (
@@ -16,8 +23,9 @@ export default function Header() {
         </Link>        
         <Link href="/campaign" className={styles.navLink}>
         Open Fundraiser
-        </Link>
-      </nav>
+        </Link>   
+        <WalletMultiButton/>     
+      </nav>      
     </header>
   );
 };
