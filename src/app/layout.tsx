@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { SolanaProvider } from "@/components/SolanaProvider";
 
 export const metadata: Metadata = {
   title: "FriendFund",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header/>
+        <SolanaProvider>
+        <Header/>        
         {children}
+        </SolanaProvider>
       </body>
     </html>
   );
