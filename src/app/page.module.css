@@ -62,6 +62,7 @@
   justify-content: center;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
 }
 
 .heroFeatures span {
@@ -76,6 +77,7 @@
   display: flex;
   justify-content: center;
   gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
 .createButton {
@@ -147,5 +149,77 @@
   justify-content: center;
   align-items: center;
   margin-bottom: var(--spacing-sm);
+}
+
+/* Медиа-запросы для мобильной адаптации */
+@media (max-width: 768px) {
+  .main {
+    padding: var(--spacing-md);
+  }
+
+  .hero {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .heroTitle {
+    font-size: calc(var(--font-size-h1) * 0.8);
+  }
+
+  .heroSubtitle {
+    font-size: calc(var(--font-size-base) * 0.9);
+  }
+
+  .heroFeatures {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroFeatures span {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .createButton {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .features {
+    padding: var(--spacing-lg);
+  }
+
+  .features h3 {
+    font-size: calc(var(--font-size-h2) * 0.8);
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .feature {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Дополнительные медиа-запросы для очень маленьких экранов */
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: calc(var(--font-size-h1) * 0.7);
+  }
+
+  .heroSubtitle {
+    font-size: calc(var(--font-size-base) * 0.8);
+  }
+
+  .features h3 {
+    font-size: calc(var(--font-size-h2) * 0.7);
+  }
 }
 
