@@ -22,9 +22,14 @@ export default function Header() {
           Create Fundraiser
         </Link>        
         <Link href="/campaign" className={styles.navLink}>
-        Open Fundraiser
-        </Link>   
-        <WalletMultiButton/>     
+          Open Fundraiser
+        </Link>
+        <Link href="/my-campaigns" className={styles.navLink}>
+          My Campaigns
+        </Link>
+        <div className={styles.walletButton}>
+          <WalletMultiButton/>
+        </div>
       </nav>      
     </header>
   );
