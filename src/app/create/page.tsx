@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import styles from './page.module.css'; 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const CreateCampaignPage: React.FC = () => {
+  const router = useRouter();
   
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -15,6 +17,7 @@ const CreateCampaignPage: React.FC = () => {
   const [nftEnabled, setNftEnabled] = useState(false);
   const [nftThreshold, setNftThreshold] = useState<number | undefined>();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [walletAddress, setWalletAddress] = useState('');
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -28,10 +31,17 @@ const CreateCampaignPage: React.FC = () => {
       image,
       nftEnabled,
       nftThreshold,
+      walletAddress,
+      createdAt: new Date().toISOString()
     };
-    console.log('Створено новий збір:', newCampaign);
 
-    alert('Збір буде створено (функціонал бекенду не реалізовано).');
+    
+    const existingCampaigns = JSON.parse(localStorage.getItem('myCampaigns') || '[]');
+    localStorage.setItem('myCampaigns', JSON.stringify([...existingCampaigns, newCampaign]));
+
+    console.log('Створено новий збір:', newCampaign);
+    alert('Збір успішно створено!');
+    router.push('/my-campaigns');
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,6 +69,18 @@ const CreateCampaignPage: React.FC = () => {
       <h1 className={styles.formTitle}>Create a New Fundraiser</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
+          <label htmlFor="wallet" className={styles.label}>Your Wallet Address:</label>
+          <input
+            type="text"
+            id="wallet"
+            className={styles.input}
+            value={walletAddress}
+            onChange={(e) => setWalletAddress(e.target.value)}
+            required
+            placeholder="0x..."
+          />
+        </div>
+        <div className={styles.formGroup}>
           <label htmlFor="title" className={styles.label}>Fundraiser Title:</label>
           <input
             type="text"
@@ -66,17 +88,6 @@ const CreateCampaignPage: React.FC = () => {
             className={styles.input}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="description" className={styles.label}>Description:</label>
-          <textarea
-            id="description"
-            className={styles.textarea}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            rows={5}
             required
           />
         </div>
