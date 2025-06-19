@@ -1,0 +1,290 @@
+{
+    "version": "0.1.0",
+    "name": "friends_fund",
+    "instructions": [
+        {
+            "name": "initialize",
+            "accounts": [
+                {
+                    "name": "fundraiser",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "usdcMint",
+                    "isMut": false,
+                    "isSigner": false
+                },
+                {
+                    "name": "payer",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "name": "goalAmount",
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "donate",
+            "accounts": [
+                {
+                    "name": "fundraiser",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "donorUsdcAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "fundraiserUsdcAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "donor",
+                    "isMut": false,
+                    "isSigner": true
+                },
+                {
+                    "name": "usdcMint",
+                    "isMut": false,
+                    "isSigner": false
+                },
+                {
+                    "name": "tokenProgram",
+                    "isMut": false,
+                    "isSigner": false
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "amount",
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "mintRewardNft",
+            "accounts": [
+                {
+                    "name": "fundraiser",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "donorUsdcAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "fundraiserUsdcAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "donor",
+                    "isMut": false,
+                    "isSigner": true
+                },
+                {
+                    "name": "usdcMint",
+                    "isMut": false,
+                    "isSigner": false
+                },
+                {
+                    "name": "tokenProgram",
+                    "isMut": false,
+                    "isSigner": false
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "proposeHelp",
+            "accounts": [
+                {
+                    "name": "fundraiser",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "proposer",
+                    "isMut": false,
+                    "isSigner": true
+                }
+            ],
+            "args": [
+                {
+                    "name": "proposal",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "voteForProposal",
+            "accounts": [
+                {
+                    "name": "fundraiser",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "voter",
+                    "isMut": false,
+                    "isSigner": true
+                }
+            ],
+            "args": [
+                {
+                    "name": "proposalIndex",
+                    "type": "u8"
+                }
+            ]
+        },
+        {
+            "name": "closeFundraiser",
+            "accounts": [
+                {
+                    "name": "fundraiser",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "creator",
+                    "isMut": false,
+                    "isSigner": true
+                }
+            ],
+            "args": []
+        }
+    ],
+    "accounts": [
+        {
+            "name": "Fundraiser",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "creator",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "totalDonations",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "goalAmount",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "usdcMint",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "isActive",
+                        "type": "bool"
+                    },
+                    {
+                        "name": "bump",
+                        "type": "u8"
+                    },
+                    {
+                        "name": "donors",
+                        "type": {
+                            "vec": "publicKey"
+                        }
+                    },
+                    {
+                        "name": "helpProposals",
+                        "type": {
+                            "vec": {
+                                "defined": "HelpProposal"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "types": [
+        {
+            "name": "HelpProposal",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "proposer",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "proposal",
+                        "type": "string"
+                    },
+                    {
+                        "name": "votes",
+                        "type": "u32"
+                    }
+                ]
+            }
+        }
+    ],
+    "errors": [
+        {
+            "code": 6000,
+            "name": "InactiveFundraiser",
+            "msg": "Fanderer is not active"
+        },
+        {
+            "code": 6001,
+            "name": "InvalidAmount",
+            "msg": "Non correct Amount"
+        },
+        {
+            "code": 6002,
+            "name": "InvalidProposalIndex",
+            "msg": "Suppress Supply Index"
+        },
+        {
+            "code": 6003,
+            "name": "Unauthorized",
+            "msg": "Unauthorized access"
+        }
+    ]
+}
